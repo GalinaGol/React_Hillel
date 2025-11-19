@@ -5,8 +5,7 @@ import PropTypes from "prop-types";
 function TodoItem({ todo, onDelete }) {
     return (
         <Card
-            className="mb-3 shadow-sm border-0 bg-light"
-            style={{ borderRadius: "14px" }}
+            className="mb-3 shadow-sm border-0 bg-light border-radius-14"
         >
             <Card.Body>
                 <div className="d-flex justify-content-between align-items-start">
@@ -37,7 +36,6 @@ function TodoItem({ todo, onDelete }) {
                         variant="outline-danger"
                         size="sm"
                         onClick={onDelete}
-                        style={{ height: "32px" }}
                     >
                         Delete
                     </Button>

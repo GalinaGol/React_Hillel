@@ -1,13 +1,19 @@
 import React, {useState} from "react";
 import Container from "react-bootstrap/Container";
-import TodoForm from "./components/TodoForm.jsx";
+import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 
 function App() {
     const [todos, setTodos] = useState([]);
 
     const handleAddTask = (task) => {
-       setTodos([...todos, {...task, id: Date.now()}]);
+        setTodos(prevTodos => [
+            ...prevTodos,
+            {
+                ...task,
+                id: crypto.randomUUID(),
+            }
+        ]);
     };
 
     const handleDeleteTask = (id) => {
@@ -16,21 +22,17 @@ function App() {
 
     return (
         <Container className="py-5">
-            <div
-                className="d-flex gap-4 p-4"
-                style={{
-                    background: "#ffffff",
-                }}
-            >
+            <div className="p-4 bg-white">
+                <div className="row g-4">
+                    <div className="col-12 col-md-4">
+                        <TodoForm onSubmit={handleAddTask} />
+                    </div>
 
-                <div style={{ flex: "0 0 360px" }}>
-                    <TodoForm onSubmit={handleAddTask} />
-                </div>
+                    {!!todos.length && <hr className="d-block d-md-none" />}
 
-
-                {!!todos.length && <hr className="d-block d-md-none" />}
-                <div style={{ flex: 1 }}>
-                    <TodoList todos={todos} onDelete={handleDeleteTask} />
+                    <div className="col-12 col-md-8">
+                        <TodoList todos={todos} onDelete={handleDeleteTask} />
+                    </div>
                 </div>
             </div>
         </Container>

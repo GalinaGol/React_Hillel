@@ -2,9 +2,9 @@ import React from 'react';
 import { useFormik } from 'formik';
 import { Form } from "react-bootstrap";
 import PropTypes from "prop-types";
-import validationSchema from "../validation/validationSchema.js";
-import Input from "../Form/Input";
-import Select from "../Form/Select";
+import validationSchema from "../schemas/validationSchema.js";
+import Input from "./FormElements/Input";
+import Select from "./FormElements/Select";
 
 const TodoForm = ({ onSubmit }) => {
 
@@ -24,13 +24,7 @@ const TodoForm = ({ onSubmit }) => {
 
     return (
         <div
-            className="p-4 shadow-sm"
-            style={{
-                background: "#e8f2ff",
-                borderRadius: "16px",
-                minWidth: "340px",
-                border: "1px solid #d7e6ff"
-            }}
+            className="p-4 shadow-sm bg-primary bg-opacity-10 border  rounded-4"
         >
             <h4 className="mb-4 fw-bold text-primary">Create Task</h4>
 
@@ -100,17 +94,15 @@ const TodoForm = ({ onSubmit }) => {
                     <div className="d-flex gap-2">
                         <input
                             type="submit"
-                            className="btn btn-primary px-3"
+                            className="btn btn-primary px-3 border-radius-10"
                             value="Create Task"
                             disabled={!formik.isValid}
-                            style={{ borderRadius: "10px" }}
                         />
 
                         <input
                             type="reset"
                             value="Clear"
-                            className="btn btn-light border px-3"
-                            style={{ borderRadius: "10px" }}
+                            className="btn btn-light border px-3 border-radius-10"
                             onClick={() => formik.resetForm()}
                         />
                     </div>

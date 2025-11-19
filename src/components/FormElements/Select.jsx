@@ -19,7 +19,7 @@ const Select = ({
             <Form.Select
                 name={name}
                 {...restProps}
-                style={{ borderRadius: "10px" }}
+                className='border-radius-10'
             >
                 <option value="">Choose...</option>
 
